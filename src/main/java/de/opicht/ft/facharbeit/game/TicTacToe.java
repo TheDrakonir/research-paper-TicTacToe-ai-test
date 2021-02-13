@@ -33,9 +33,6 @@ public class TicTacToe {
             return Optional.of(agents[finishingAgentIndex]);
         }
 
-        // TODO: Remove
-        boardState.printBoard();
-
         return Optional.empty();
     }
 
@@ -47,7 +44,6 @@ public class TicTacToe {
     }
 
     private static boolean isFinished(BoardState boardState) {
-        boardState.printBoard();
         return boardState.isWon() || boardState.isFull();
     }
 
