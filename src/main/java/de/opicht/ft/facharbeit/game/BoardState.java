@@ -1,7 +1,9 @@
 package de.opicht.ft.facharbeit.game;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BoardState {
@@ -30,7 +32,22 @@ public class BoardState {
     }
 
     public BoardState getBoardCopy() {
-        return new BoardState(board.clone());
+        return new BoardState(Arrays.stream(board).map(PositionState[]::clone).toArray(PositionState[][]::new));
+        
+    }
+
+    public Set<Move> getPossibleMoves() {
+        Set<Move> result = new HashSet<>();
+
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board[y].length; x++) {
+                if (board[y][x] == PositionState.EMPTY) {
+                    result.add(new Move(y, x));
+                }
+            }
+        }
+
+        return result;
     }
 
     /**
