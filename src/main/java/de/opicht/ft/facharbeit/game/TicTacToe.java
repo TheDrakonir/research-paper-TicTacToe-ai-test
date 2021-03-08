@@ -6,13 +6,12 @@ import de.opicht.ft.facharbeit.agents.Agent;
 
 public class TicTacToe {
 
-    private TicTacToe() {
-    }
+    private TicTacToe() { }
 
     /**
      * Starts and runs the game simulation for the agents given on initialization
      * 
-     * @param agents Varargs of agents to play the game; must be exactly two!
+     * @param agents Varargs of agents to play the game; must be exactly two! First agent is X (beginning player), second agent is O.
      * @return the winning agent or an empty optional if it's a draw
      */
     public static Optional<Agent> start(Agent... agents) {
@@ -25,6 +24,7 @@ public class TicTacToe {
 
         while (!isFinished(boardState)) {
             playNextMove(agents[nextAgentIndex], boardState, nextAgentIndex);
+            boardState.printBoard();
             nextAgentIndex = (nextAgentIndex == 0 ? 1 : 0);
         }
 
