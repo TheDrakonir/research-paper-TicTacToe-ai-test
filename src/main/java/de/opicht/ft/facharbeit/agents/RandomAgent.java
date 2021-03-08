@@ -14,11 +14,11 @@ public class RandomAgent implements Agent {
     }
 
     @Override
-    public Move determineNextMove(PositionState[][] board) {
+    public Move determineNextMove(BoardState boardState) {
         while (true) {
             int[] randomIndecies = ThreadLocalRandom.current().ints(2, 0, BoardState.BOARD_SIZE).toArray();
             
-            if (board[randomIndecies[0]][randomIndecies[1]] == PositionState.EMPTY) {
+            if (boardState.board[randomIndecies[0]][randomIndecies[1]] == PositionState.EMPTY) {
                 return new Move(randomIndecies[0], randomIndecies[1]);
             }
         }

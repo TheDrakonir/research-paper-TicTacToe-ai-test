@@ -8,7 +8,7 @@ public class BoardState {
 
     public static final int BOARD_SIZE = 3;
 
-    private final PositionState[][] board;
+    public final PositionState[][] board;
 
     public BoardState() {
         this.board = new PositionState[BOARD_SIZE][BOARD_SIZE];
@@ -29,8 +29,8 @@ public class BoardState {
         this.board = board;
     }
 
-    public PositionState[][] getBoardCopy() {
-        return board.clone();
+    public BoardState getBoardCopy() {
+        return new BoardState(board.clone());
     }
 
     /**

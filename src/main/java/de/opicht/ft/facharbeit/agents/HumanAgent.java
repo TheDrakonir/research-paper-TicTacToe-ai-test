@@ -2,8 +2,8 @@ package de.opicht.ft.facharbeit.agents;
 
 import java.util.Scanner;
 
+import de.opicht.ft.facharbeit.game.BoardState;
 import de.opicht.ft.facharbeit.game.Move;
-import de.opicht.ft.facharbeit.game.PositionState;
 
 public class HumanAgent implements Agent {
 
@@ -19,7 +19,7 @@ public class HumanAgent implements Agent {
     }
 
     @Override
-    public Move determineNextMove(PositionState[][] board) {
+    public Move determineNextMove(BoardState boardState) {
         System.out.println("Input the number of the field you want to choose. (1-9, left to right, top to bottom)");
         int targetField = 0;
         do {
