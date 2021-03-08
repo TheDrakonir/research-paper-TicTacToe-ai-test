@@ -1,6 +1,7 @@
 package de.opicht.ft.facharbeit.game;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class BoardState {
@@ -39,8 +40,21 @@ public class BoardState {
         return true;
     }
 
+    public int getScore(Players player) {
+        WinState winState = getWinState();
+        if (isFull() && !winState.isWon) {
+            return 0;
+        }
+
+        return winState.winner.orElseThrow(IllegalStateException::new) == player ? 1 : -1;
+    }
+
+    public Optional<Players> getWinner() {
+        return getWinState().winner;
+    }
+
     public boolean isWon() {
-        return hasWonRow() || hasWonColumn() || hasWonDiagonal();
+        return getWinState().isWon;
     }
 
     public boolean isFull() {
@@ -63,7 +77,11 @@ public class BoardState {
         System.out.println();
     }
 
-    private boolean hasWonRow() {
+    private WinState getWinState() {
+        return getWonRowState().combine(getWonColumnState()).combine(getWonDiagonalState());
+    }
+
+    private WinState getWonRowState() {
         for (int y = 0; y < board.length; y++) {
             if (board[y][0] == PositionState.EMPTY) {
                 continue;
@@ -74,15 +92,15 @@ public class BoardState {
                 }
 
                 if (x == board[y].length - 1) {
-                    return true;
+                    return new WinState(true, Players.getByPositionState(board[y][0]));
                 }
             }
         }
 
-        return false;
+        return new WinState(false, Optional.empty());
     }
 
-    private boolean hasWonColumn() {
+    private WinState getWonColumnState() {
         for (int x = 0; x < board[0].length; x++) {
             if (board[0][x] == PositionState.EMPTY) {
                 continue;
@@ -93,19 +111,19 @@ public class BoardState {
                 }
 
                 if (y == board.length - 1) {
-                    return true;
+                    return new WinState(true, Players.getByPositionState(board[0][x]));
                 }
             }
         }
 
-        return false;
+        return new WinState(false, Optional.empty());
     }
 
-    private boolean hasWonDiagonal() {
-        return hasWonLeftToRightDiagonal() || hasWonRightToLeftDiagonal();
+    private WinState getWonDiagonalState() {
+        return getWonLeftToRightDiagonalState().combine(getWonRightToLeftDiagonalState());
     }
 
-    private boolean hasWonLeftToRightDiagonal() {
+    private WinState getWonLeftToRightDiagonalState() {
         if (board[0][0] != PositionState.EMPTY) {
             for (int i = 1; i < board.length; i++) {
                 if (board[i][i] != board[0][0]) {
@@ -113,15 +131,15 @@ public class BoardState {
                 }
 
                 if (i == board.length - 1) {
-                    return true;
+                    return new WinState(true, Players.getByPositionState(board[0][0]));
                 }
             }
         }
 
-        return false;
+        return new WinState(false, Optional.empty());
     }
 
-    private boolean hasWonRightToLeftDiagonal() {
+    private WinState getWonRightToLeftDiagonalState() {
         if (board[0][BOARD_SIZE - 1] != PositionState.EMPTY) {
             for (int i = 1; i < board.length; i++) {
                 if (board[i][BOARD_SIZE - 1 - i] != board[0][BOARD_SIZE - 1]) {
@@ -129,11 +147,11 @@ public class BoardState {
                 }
 
                 if (i == board.length - 1) {
-                    return true;
+                    return new WinState(true, Players.getByPositionState(board[0][BOARD_SIZE - 1]));
                 }
             }
         }
 
-        return false;
+        return new WinState(false, Optional.empty());
     }
 }
