@@ -21,6 +21,14 @@ public class BoardState {
         }
     }
 
+    public BoardState(PositionState[][] board) {
+        if (board.length != BOARD_SIZE || board[0].length != BOARD_SIZE) {
+            throw new IllegalArgumentException("Supplied board has invalid dimensions!");
+        }
+
+        this.board = board;
+    }
+
     public PositionState[][] getBoardCopy() {
         return board.clone();
     }
@@ -42,7 +50,7 @@ public class BoardState {
 
     public int getScore(Players player) {
         WinState winState = getWinState();
-        if (isFull() && !winState.isWon) {
+        if (!winState.isWon) {
             return 0;
         }
 
@@ -75,6 +83,26 @@ public class BoardState {
 
         System.out.println(output);
         System.out.println();
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + Arrays.deepHashCode(board);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        BoardState other = (BoardState) obj;
+        return Arrays.deepEquals(board, other.board);
     }
 
     private WinState getWinState() {
