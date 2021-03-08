@@ -18,4 +18,8 @@ public enum Players {
         return Stream.of(Players.values()).filter(player -> player.positionState == positionState).findFirst();
     }
 
+    public static Players getOtherPlayer(Players player) {
+        return player == PLAYER_X ? PLAYER_X : PLAYER_O;
+    }
+
 }
