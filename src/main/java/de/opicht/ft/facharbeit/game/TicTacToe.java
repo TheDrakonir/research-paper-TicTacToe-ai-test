@@ -11,7 +11,8 @@ public class TicTacToe {
     /**
      * Starts and runs the game simulation for the agents given on initialization
      * 
-     * @param agents Varargs of agents to play the game; must be exactly two! First agent is X (beginning player), second agent is O.
+     * @param agents Varargs of agents to play the game; must be exactly two! First
+     *               agent is X (beginning player), second agent is O.
      * @return the winning agent or an empty optional if it's a draw
      */
     public static Optional<Agent> start(Agent... agents) {
@@ -24,7 +25,7 @@ public class TicTacToe {
 
         while (!isFinished(boardState)) {
             playNextMove(agents[nextAgentIndex], boardState, nextAgentIndex);
-            boardState.printBoard();
+            // boardState.printBoard();
             nextAgentIndex = (nextAgentIndex == 0 ? 1 : 0);
         }
 
@@ -38,7 +39,7 @@ public class TicTacToe {
 
     private static void playNextMove(Agent agent, BoardState boardState, int playerIndex) {
         while (!boardState.applyMove(Players.values()[playerIndex],
-                agent.determineNextMove(boardState.getBoardCopy()))) {
+                agent.determineNextMove(boardState.getBoardCopy(), Players.values()[playerIndex]))) {
             System.out.println("Invalid move. Retrying...");
         }
     }

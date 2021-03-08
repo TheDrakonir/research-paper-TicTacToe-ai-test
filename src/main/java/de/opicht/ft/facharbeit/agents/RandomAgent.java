@@ -4,6 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import de.opicht.ft.facharbeit.game.BoardState;
 import de.opicht.ft.facharbeit.game.Move;
+import de.opicht.ft.facharbeit.game.Players;
 import de.opicht.ft.facharbeit.game.PositionState;
 
 public class RandomAgent implements Agent {
@@ -14,7 +15,7 @@ public class RandomAgent implements Agent {
     }
 
     @Override
-    public Move determineNextMove(BoardState boardState) {
+    public Move determineNextMove(BoardState boardState, Players self) {
         while (true) {
             int[] randomIndecies = ThreadLocalRandom.current().ints(2, 0, BoardState.BOARD_SIZE).toArray();
             
