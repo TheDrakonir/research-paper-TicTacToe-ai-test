@@ -71,7 +71,7 @@ public class BoardState {
             return 0;
         }
 
-        return winState.winner.orElseThrow(IllegalStateException::new) == player ? 1 : -1;
+        return winState.winner.orElseThrow(IllegalStateException::new) == player ? 10 : -10;
     }
 
     public Optional<Players> getWinner() {

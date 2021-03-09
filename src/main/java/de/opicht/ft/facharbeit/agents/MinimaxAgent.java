@@ -14,12 +14,12 @@ public class MinimaxAgent implements Agent {
     @Override
     public Move determineNextMove(BoardState boardState, Players self) {
         Move bestMove = null;
-        double bestMoveScore = Integer.MIN_VALUE;
+        int bestMoveScore = Integer.MIN_VALUE;
         
         for (Move move : boardState.getPossibleMoves()) {
             BoardState newState = boardState.getBoardCopy();
             newState.applyMove(self, move);
-            double score = minimax(newState, false, 1, self, Players.getOtherPlayer(self));
+            int score = minimax(newState, false, 1, self, Players.getOtherPlayer(self));
 
             if (score > bestMoveScore) {
                 bestMove = move;
@@ -30,13 +30,13 @@ public class MinimaxAgent implements Agent {
         return bestMove;
     }
 
-    private double minimax(BoardState state, boolean isMaximizingPlayer, int depth, Players self, Players other) {
+    private int minimax(BoardState state, boolean isMaximizingPlayer, int depth, Players self, Players other) {
         if (state.isFull() || state.isWon()) {
-            return state.getScore(self) * 1.0 / depth;
+            return state.getScore(self) + (depth * (isMaximizingPlayer ? 1 : -1));
         }
 
         if (isMaximizingPlayer) {
-            double value = Double.MIN_VALUE;
+            int value = Integer.MIN_VALUE;
             for (Move move : state.getPossibleMoves()) {
                 BoardState newState = state.getBoardCopy();
                 newState.applyMove(self, move);
@@ -44,7 +44,7 @@ public class MinimaxAgent implements Agent {
             }
             return value;
         } else {
-            double value = Double.MAX_VALUE;
+            int value = Integer.MAX_VALUE;
             for (Move move : state.getPossibleMoves()) {
                 BoardState newState = state.getBoardCopy();
                 newState.applyMove(other, move);
