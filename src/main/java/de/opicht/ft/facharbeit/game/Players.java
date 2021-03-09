@@ -19,7 +19,7 @@ public enum Players {
     }
 
     public static Players getOtherPlayer(Players player) {
-        return player == PLAYER_X ? PLAYER_X : PLAYER_O;
+        return player == PLAYER_X ? PLAYER_O : PLAYER_X;
     }
 
 }
