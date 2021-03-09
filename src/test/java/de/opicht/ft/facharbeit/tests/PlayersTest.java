@@ -29,4 +29,14 @@ public class PlayersTest {
         assertSame(Optional.empty(), Players.getByPositionState(null));
     }
 
+    @Test
+    public void getOtherPlayer_X() {
+        assertSame(Players.PLAYER_O, Players.getOtherPlayer(Players.PLAYER_X));
+    }
+
+    @Test
+    public void getOtherPlayer_O() {
+        assertSame(Players.PLAYER_X, Players.getOtherPlayer(Players.PLAYER_O));
+    }
+
 }
