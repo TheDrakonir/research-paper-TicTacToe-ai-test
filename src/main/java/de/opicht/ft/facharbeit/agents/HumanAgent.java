@@ -21,7 +21,8 @@ public class HumanAgent implements Agent {
 
     @Override
     public Move determineNextMove(BoardState boardState, Players self) {
-        System.out.printf("You are %s:", self.positionState.displaySymbol);
+        System.out.printf("You are %s: %n", self.positionState.displaySymbol);
+        boardState.printBoard();
         System.out.println("Input the number of the field you want to choose. (1-9, left to right, top to bottom)");
         int targetField = 0;
         do {
