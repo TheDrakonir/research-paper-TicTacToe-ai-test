@@ -54,12 +54,12 @@ public class BoardStateTest {
 
     @Test
     public void getScore_wonPlayer() {
-        assertEquals(1, new BoardState(fullBoardWinX).getScore(Players.PLAYER_X));
+        assertEquals(10, new BoardState(fullBoardWinX).getScore(Players.PLAYER_X));
     }
 
     @Test
     public void getScore_lostPlayer() {
-        assertEquals(-1, new BoardState(fullBoardWinX).getScore(Players.PLAYER_O));
+        assertEquals(-10, new BoardState(fullBoardWinX).getScore(Players.PLAYER_O));
     }
 
     @Test
