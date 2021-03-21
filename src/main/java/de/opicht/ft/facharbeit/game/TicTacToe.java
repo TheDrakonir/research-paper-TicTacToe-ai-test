@@ -23,7 +23,7 @@ public class TicTacToe {
         BoardState boardState = new BoardState();
         int nextAgentIndex = 0;
 
-        while (!isFinished(boardState)) {
+        while (!boardState.isFinished()) {
             playNextMove(agents[nextAgentIndex], boardState, nextAgentIndex);
             // boardState.printBoard();
             nextAgentIndex = (nextAgentIndex == 0 ? 1 : 0);
@@ -43,9 +43,4 @@ public class TicTacToe {
             System.out.println("Invalid move. Retrying...");
         }
     }
-
-    private static boolean isFinished(BoardState boardState) {
-        return boardState.isWon() || boardState.isFull();
-    }
-
 }

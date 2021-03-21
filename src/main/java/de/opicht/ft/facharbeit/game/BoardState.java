@@ -93,6 +93,10 @@ public class BoardState {
         return true;
     }
 
+    public boolean isFinished() {
+        return isWon() || isFull();
+    }
+
     public void printBoard() {
         String output = Arrays.stream(board).map(row -> Arrays.stream(row)
                 .map(positionState -> positionState.displaySymbol).collect(Collectors.joining(" | ")))
