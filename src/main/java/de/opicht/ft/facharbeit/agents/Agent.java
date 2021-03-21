@@ -10,4 +10,6 @@ public interface Agent {
 
     public Move determineNextMove(BoardState boardState, Players self);
 
+    public Agent getCopy();
+
 }

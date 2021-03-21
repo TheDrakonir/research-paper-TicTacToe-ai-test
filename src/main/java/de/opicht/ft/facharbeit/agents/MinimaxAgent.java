@@ -54,4 +54,8 @@ public class MinimaxAgent implements Agent {
         }
     }
 
+    @Override
+    public Agent getCopy() {
+        return new MinimaxAgent();
+    }
 }

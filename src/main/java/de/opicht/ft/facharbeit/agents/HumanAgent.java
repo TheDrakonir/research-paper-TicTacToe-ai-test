@@ -41,4 +41,8 @@ public class HumanAgent implements Agent {
         return new Move((targetField - 1) / 3, (targetField - 1) % 3);
     }
     
+    @Override
+    public Agent getCopy() {
+        return new HumanAgent();
+    }
 }
