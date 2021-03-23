@@ -8,7 +8,15 @@ import de.opicht.ft.facharbeit.game.Players;
 
 public class MonteCarloTreeSearchAgent implements Agent {
 
-    private static final long TIME_CONSTRAINT_MILLIS = 5 * 1000L;
+    private final long timeConstraintMillis;
+
+    public MonteCarloTreeSearchAgent(long timeConstraintMillis) {
+        this.timeConstraintMillis = timeConstraintMillis;
+    }
+
+    public MonteCarloTreeSearchAgent() {
+        this(1000L);
+    }
 
     @Override
     public String getAgentIdentifier() {
@@ -20,7 +28,7 @@ public class MonteCarloTreeSearchAgent implements Agent {
         long startTime = System.currentTimeMillis();
         Tree tree = new Tree(new Node(null, boardState, Players.getOtherPlayer(self), null));
 
-        while (startTime + TIME_CONSTRAINT_MILLIS > System.currentTimeMillis()) {
+        while (startTime + timeConstraintMillis > System.currentTimeMillis()) {
             // Selection
             Node leafNode = tree.selectLeafNode();
     
@@ -59,6 +67,6 @@ public class MonteCarloTreeSearchAgent implements Agent {
 
     @Override
     public Agent getCopy() {
-        return new MonteCarloTreeSearchAgent();
+        return new MonteCarloTreeSearchAgent(this.timeConstraintMillis);
     }
 }
