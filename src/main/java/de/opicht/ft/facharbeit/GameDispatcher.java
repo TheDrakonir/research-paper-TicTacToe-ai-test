@@ -1,5 +1,6 @@
 package de.opicht.ft.facharbeit;
 
+import java.time.Duration;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
@@ -15,7 +16,7 @@ public class GameDispatcher {
         int logicalCoreCount = Runtime.getRuntime().availableProcessors();
         ExecutorService executorService = Executors.newFixedThreadPool(logicalCoreCount);
 
-        Set<Future<GameResult>> runner = ConcurrentHashMap.newKeySet();
+        Set<Future<SimulationResult>> runner = ConcurrentHashMap.newKeySet();
         for (int i = 0; i < logicalCoreCount; i++) {
             Agent[] actualAgents = new Agent[2];
             actualAgents[0] = agents[0].getCopy();
@@ -24,11 +25,11 @@ public class GameDispatcher {
                     .submit(new GameRunner((int) Math.ceil((double) gameCount / logicalCoreCount), actualAgents)));
         }
 
-        GameResult endResult = new GameResult(0, 0, agents[0].getAgentIdentifier(), 0, agents[1].getAgentIdentifier(),
-                0);
+        SimulationResult endResult = new SimulationResult(0, 0, agents[0].getAgentIdentifier(), 0, Duration.ZERO,
+                agents[1].getAgentIdentifier(), 0, Duration.ZERO);
         while (!runner.isEmpty()) {
             try {
-                for (Future<GameResult> future : runner) {
+                for (Future<SimulationResult> future : runner) {
                     if (future.isDone()) {
                         endResult = endResult.combine(future.get());
                         runner.remove(future);
