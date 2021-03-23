@@ -1,0 +1,193 @@
+Test Rig: 4 Cores (8 Threads) @ 3.00GHz and 16GB DDR3 RAM
+
+TEST: compareMinimaxToRandom_RandomStarts
+Played games: 10000
+Amount of draws: 2074
+ID starting agent: Random
+Starting agent wins: 0
+Avarage move time: 0.0000073S
+ID second agent: Minimax
+Second agent wins: 7926
+Avarage move time: 0.019891712S
+Total runtime: 1M24.9808606S
+Played games: 10000
+Amount of draws: 2078
+ID starting agent: Random
+Starting agent wins: 0
+Avarage move time: 0.000001715S
+ID second agent: Minimax with alpha-beta pruning
+Second agent wins: 7922
+Avarage move time: 0.002843579S
+Total runtime: 13.2367571S
+
+TEST: compareMinimaxToRandom_MinimaxStarts
+Played games: 10000
+Amount of draws: 217
+ID starting agent: Minimax
+Starting agent wins: 9620
+Avarage move time: 0.19335017S
+ID second agent: Random
+Second agent wins: 163
+Avarage move time: 0.000006917S
+Total runtime: 13M24.7080267S
+Played games: 10000
+Amount of draws: 187
+ID starting agent: Minimax with alpha-beta pruning
+Starting agent wins: 9663
+Avarage move time: 0.012045075S
+ID second agent: Random
+Second agent wins: 150
+Avarage move time: 0.000006283S
+Total runtime: 51.8229641S
+
+TEST: compareMctsToRandom_RandomStarts
+Played games: 1000
+Amount of draws: 77
+ID starting agent: Random
+Starting agent wins: 0
+Avarage move time: 0.000023334S
+ID second agent: Monte Carlo Tree Search - light play
+Second agent wins: 923
+Avarage move time: 1.000422553S
+Total runtime: 7M6.9954227S
+Played games: 1000
+Amount of draws: 77
+ID starting agent: Random
+Starting agent wins: 0
+Avarage move time: 0.000029401S
+ID second agent: Monte Carlo Tree Search - light play
+Second agent wins: 923
+Avarage move time: 0.500376369S
+Total runtime: 3M32.0161266S
+Played games: 1000
+Amount of draws: 89
+ID starting agent: Random
+Starting agent wins: 0
+Avarage move time: 0.0000017S
+ID second agent: Monte Carlo Tree Search - light play
+Second agent wins: 911
+Avarage move time: 0.200409545S
+Total runtime: 1M26.3399383S
+Played games: 1000
+Amount of draws: 69
+ID starting agent: Random
+Starting agent wins: 0
+Avarage move time: 0.00000025S
+ID second agent: Monte Carlo Tree Search - light play
+Second agent wins: 931
+Avarage move time: 0.100335238S
+Total runtime: 43.6464965S
+Played games: 1000
+Amount of draws: 71
+ID starting agent: Random
+Starting agent wins: 0
+Avarage move time: 0S
+ID second agent: Monte Carlo Tree Search - light play
+Second agent wins: 929
+Avarage move time: 0.050450468S
+Total runtime: 22.3152763S
+
+TEST: compareMctsToRandom_MctsStarts
+Played games: 1000
+Amount of draws: 9
+ID starting agent: Monte Carlo Tree Search - light play
+Starting agent wins: 991
+Avarage move time: 1.0020965S
+ID second agent: Random
+Second agent wins: 0
+Avarage move time: 0.000002S
+Total runtime: 6M52.8756151S
+Played games: 1000
+Amount of draws: 9
+ID starting agent: Monte Carlo Tree Search - light play
+Starting agent wins: 991
+Avarage move time: 0.501958793S
+ID second agent: Random
+Second agent wins: 0
+Avarage move time: 0S
+Total runtime: 3M26.0627862S
+Played games: 1000
+Amount of draws: 7
+ID starting agent: Monte Carlo Tree Search - light play
+Starting agent wins: 993
+Avarage move time: 0.200739664S
+ID second agent: Random
+Second agent wins: 0
+Avarage move time: 0S
+Total runtime: 1M25.1828722S
+Played games: 1000
+Amount of draws: 8
+ID starting agent: Monte Carlo Tree Search - light play
+Starting agent wins: 992
+Avarage move time: 0.100473163S
+ID second agent: Random
+Second agent wins: 0
+Avarage move time: 0S
+Total runtime: 41.593379S
+Played games: 1000
+Amount of draws: 5
+ID starting agent: Monte Carlo Tree Search - light play
+Starting agent wins: 995
+Avarage move time: 0.050168718S
+ID second agent: Random
+Second agent wins: 0
+Avarage move time: 0S
+Total runtime: 22.2922751S
+
+TEST: compareMinimaxToMcts_MctsStarts
+Played games: 1000
+Amount of draws: 1000
+ID starting agent: Monte Carlo Tree Search - light play
+Starting agent wins: 0
+Avarage move time: 0.200970895S
+ID second agent: Minimax with alpha-beta pruning
+Second agent wins: 0
+Avarage move time: 0.002497642S
+Total runtime: 2M8.7693651S
+Played games: 1000
+Amount of draws: 1000
+ID starting agent: Monte Carlo Tree Search - light play
+Starting agent wins: 0
+Avarage move time: 0.100563351S
+ID second agent: Minimax with alpha-beta pruning
+Second agent wins: 0
+Avarage move time: 0.002237628S
+Total runtime: 1M6.0187761S
+Played games: 1000
+Amount of draws: 1000
+ID starting agent: Monte Carlo Tree Search - light play
+Starting agent wins: 0
+Avarage move time: 0.05019147S
+ID second agent: Minimax with alpha-beta pruning
+Second agent wins: 0
+Avarage move time: 0.00228663S
+Total runtime: 34.512974S
+
+TEST: compareMinimaxToMcts_MinimaxStarts
+Played games: 1000
+Amount of draws: 566
+ID starting agent: Minimax with alpha-beta pruning
+Starting agent wins: 2
+Avarage move time: 0.010652008S
+ID second agent: Monte Carlo Tree Search - light play
+Second agent wins: 432
+Avarage move time: 0.200318958S
+Total runtime: 1M47.6551575S
+Played games: 1000
+Amount of draws: 564
+ID starting agent: Minimax with alpha-beta pruning
+Starting agent wins: 1
+Avarage move time: 0.010025123S
+ID second agent: Monte Carlo Tree Search - light play
+Second agent wins: 435
+Avarage move time: 0.100219482S
+Total runtime: 57.7363024S
+Played games: 1000
+Amount of draws: 530
+ID starting agent: Minimax with alpha-beta pruning
+Starting agent wins: 84
+Avarage move time: 0.009813911S
+ID second agent: Monte Carlo Tree Search - light play
+Second agent wins: 386
+Avarage move time: 0.050150702S
+Total runtime: 31.4988016S
