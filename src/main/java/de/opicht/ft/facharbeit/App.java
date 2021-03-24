@@ -4,19 +4,11 @@ import java.time.Duration;
 import java.time.Instant;
 
 import de.opicht.ft.facharbeit.agents.Agent;
-import de.opicht.ft.facharbeit.agents.MinimaxAgent;
-import de.opicht.ft.facharbeit.agents.MinimaxWithPruningAgent;
-import de.opicht.ft.facharbeit.agents.MonteCarloTreeSearchAgent;
-import de.opicht.ft.facharbeit.agents.RandomAgent;
 
 public class App {
 
-    public static void main(String[] args) {
-        Agent[] agents = new Agent[] { new MinimaxAgent(), new MonteCarloTreeSearchAgent(50) };
-        benchmarkGames(200, agents);
-
-        // Agent[] agents2 = new Agent[] { new MinimaxWithPruningAgent(), new MonteCarloTreeSearchAgent() };
-        // benchmarkGames(100, agents2);
+    private App() {
+        // static application class
     }
 
     public static void benchmarkGames(int gameCount, Agent... agents) {
